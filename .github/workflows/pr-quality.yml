@@ -1,0 +1,37 @@
+name: 📋 PR Quality Check
+
+# Ensures every pull request has a meaningful title and description
+# before it can be reviewed. Helps maintain clear commit history.
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  check-pr-description:
+    name: Validate PR Title & Description
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR title is not a placeholder
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          if echo "$PR_TITLE" | grep -iqE "^(update|fix|test|wip|asdf|untitled|week [0-9]+)$"; then
+            echo "  PR title is too vague: '$PR_TITLE'"
+            echo "  Please use a descriptive title, e.g.:"
+            echo "  'Week 7 Q1: implement number classifier with macros'"
+            exit 1
+          fi
+          echo "    PR title looks good: '$PR_TITLE'"
+
+      - name: Check PR body is not empty
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          if [ -z "$(echo "$PR_BODY" | tr -d '[:space:]')" ]; then
+            echo "  PR description is empty."
+            echo "  Please fill in the pull request template."
+            exit 1
+          fi
+          echo "    PR description is present."

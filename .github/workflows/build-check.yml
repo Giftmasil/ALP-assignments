@@ -1,0 +1,43 @@
+name: 🔧 NASM Build Check
+
+# Runs on every push to any branch, and on all PRs targeting main.
+# This ensures broken assembly never reaches main undetected.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-week-7:
+    name: Build & Run Week 7 Programs
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Install NASM + linker
+      - name: Install NASM and build tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y nasm binutils
+
+      # 3. Make the build script executable
+      - name: Make build.sh executable
+        run: chmod +x build.sh
+
+      # 4. Build and run each Week 7 program (64-bit)
+      - name: "Q1 — Classify Number"
+        run: ./build.sh week-7/q1_classify_number 64
+
+      - name: "Q2 — Add Arrays"
+        run: ./build.sh week-7/q2_add_arrays 64
+
+      - name: "Q3 — Count Occurrences"
+        run: ./build.sh week-7/q3_count_occurrences 64
+
+  # Future weeks: copy the job above and update the paths
+  # build-week-8:
+  #   ...
