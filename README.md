@@ -188,28 +188,6 @@ You can see the results of these checks on the PR page under the **Checks** tab.
 
 ---
 
-## ⚙️ Branch Protection Setup (for @Giftmasil only)
-
-> This section is for the repository owner to configure once.
-
-Go to **Settings → Branches → Add branch ruleset** and configure:
-
-1. **Branch name pattern:** `main`
-2. **Bypass list** → add `@Giftmasil` (role: Repository admin or by username)
-   - This means you can push directly to `main` anytime without needing approval — useful for emergency fixes
-3. **Restrict pushes** → enable, but do NOT add yourself to "allowed pushers" (the bypass above already covers you)
-4. **Require a pull request before merging** → enable
-   - Required approvals: **1** (any collaborator can approve — no restriction on who)
-   - Dismiss stale reviews when new commits are pushed: **✅**
-   - Do NOT enable "Require review from Code Owners" — this is intentionally off so any peer can approve
-5. **Require status checks to pass** → enable
-   - Add: `Build & Run Week 7 Programs`
-   - Add: `Validate PR Title & Description`
-6. **Block force pushes** → enable (the bypass list overrides this for you, so you can still force push if needed)
-7. **Restrict deletions** → enable
-
----
-
 ## ❓ FAQ
 
 **Q: I cloned the repo but `./build.sh` says permission denied.**  
