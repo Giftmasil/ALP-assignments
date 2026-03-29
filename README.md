@@ -234,5 +234,4 @@ A: Technically yes, but it's better practice to have one branch per question so 
 
 ## 📬 Contact
 
-Open a GitHub Issue if you have questions about the repo setup or the build script.  
-For assignment questions, ask during class or in your course group chat.
+Open a GitHub Issue or better messege in the group if you have questions about the repo setup or the build script.  
