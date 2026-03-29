@@ -168,7 +168,7 @@ git push origin week-7/q1-alice
 | **Branch protection** | No one can push directly to `main` — except @Giftmasil (bypass rights for emergency fixes) |
 | **Required approvals** | Every PR needs 1 approval from any collaborator before merging |
 | **Build must pass** | The automated NASM build check must pass before a PR can be merged |
-| **No editing others' files** | Only modify your own `.asm` files |
+| **No editing others' files or section** | Only modify your own `.asm` files or section - this is to prevent merge conflict, so if someone is working on a change on that section do not also be working on it |
 | **No editing `build.sh`** | This is shared infrastructure — raise an issue if something is wrong with it |
 | **Branch naming** | Use `week-N/qN-your-name` format |
 | **Commit messages** | Be descriptive — `"Add Q1 solution with loop macro"` not `"update"` |
