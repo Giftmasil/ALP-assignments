@@ -155,7 +155,7 @@ git push origin week-7/q1-alice
 
 #### 7. Wait for review
 
-**@Giftmasil** will review your PR. The automated build check will also run — if it fails, fix the errors and push again (the PR updates automatically).
+**ANYONE** will review your PR. The automated build check will also run — if it fails, fix the errors and push again (the PR updates automatically).
 
 > ⚠️ **PRs that fail the automated build check will not be reviewed until the build is fixed.**
 
