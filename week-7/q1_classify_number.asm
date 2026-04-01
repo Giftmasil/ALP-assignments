@@ -1,8 +1,8 @@
-; q1_classify_number.asm — Week 7 Q1
-; Classify digits 0–9 using LOOP, JMP, and macros:
-;   0–3 → "Small Number" | 4–7 → "Average Number" | 8–9 → "Large Number"
-; Build: ./build.sh week-7/q1_classify_number 64
-
+;Gift Muuo Masila - SCS3/2109/2024
+;Aneselmus  Oyando - SCS3/2127/2024
+;Violet Onyango - SCS3/2137/2024
+;Melissa Angwenyi - SCS3/149260/2024
+;Juliet Jaoko - SCS3/2111/2024
 %macro print 2
     push rax
     push rcx            
