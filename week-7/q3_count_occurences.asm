@@ -1,3 +1,9 @@
+;Gift Muuo Masila - SCS3/2109/2024
+;Aneselmus  Oyando - SCS3/2127/2024
+;Violet Onyango - SCS3/2137/2024
+;Melissa Angwenyi - SCS3/149260/2024
+;Juliet Jaoko - SCS3/2111/2024
+
 %define SYSWRITE 1
 %define STDOUT 1
 %define SYSREAD 0
@@ -26,7 +32,7 @@ section .data
     array db 3, 2, 3, 6, 3, 4, 5, 3, 10
     array_len equ $ - array
     newline db 10
-    comma db ','
+    space db ' '
 
 section .bss
     count resb 1
@@ -36,9 +42,9 @@ section .text
     global _start
 
 _start:
-    mov rbx, 0    ;counter    
+    mov rbx, 0    
     mov r14, positions      
-    mov rsi, array   ;position of first element        
+    mov rsi, array      
     mov rcx, array_len    
 
 .loop_array:
@@ -63,7 +69,7 @@ _start:
     print_string newline, 1  
 
 
-    mov rcx, rbx; rbx contains the lenght of the array that was actually filled with values
+    mov rcx, rbx
     mov r15, positions
 
 .print_array:
@@ -79,17 +85,9 @@ _start:
     sub al, '0'
     mov [r15], al
 
+    print_string space, 1
+
     pop rcx
-
-    ; Only print comma if this is NOT the last element
-    cmp rcx, 1
-    je .skip_comma          ; if rcx == 1, this is the last one, skip comma
-
-    push rcx
-    print_string comma, 1
-    pop rcx
-
-.skip_comma:
     inc r15
     dec rcx
     cmp rcx, 0

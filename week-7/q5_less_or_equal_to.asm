@@ -3,6 +3,7 @@
 ;Violet Onyango - SCS3/2137/2024
 ;Melissa Angwenyi - SCS3/149260/2024
 ;Juliet Jaoko - SCS3/2111/2024
+
 %macro print 2
     push rax
     push rcx
@@ -24,7 +25,7 @@
 %endmacro
 
 section .data
-    array_1 db 1, 3, 6, 5, 7, 6
+    array_1 db 1, 2, 6, 1, 7, 6
     array_len equ $ - array_1
 
     array_2 db 4, 3, 2, 3, 2, 2
@@ -57,13 +58,22 @@ _start:
 
 
     mov r15, answer         
-    mov rcx, array_len      
+    mov rcx, array_len    
 
-.print_array:              
-    mov al, [r15]           
-    add al, '0'             
-    mov [r15], al           
+.print_array:
+              
+    mov al, [r15]          
+    cmp al, 5
+    jle .print_digit
+    dec rcx
+    inc r15
+    cmp rcx, 0
+    jne .print_array
+    jmp .done
 
+.print_digit:
+    add al, '0'
+    mov [r15], al
 
     print r15, 1
 
@@ -72,9 +82,8 @@ _start:
     mov [r15], al
 
     print newline, 1
-                
-    inc r15                 
     dec rcx
+    inc r15
     cmp rcx, 0
     jne .print_array
 
