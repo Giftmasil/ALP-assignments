@@ -22,7 +22,7 @@ if [ -z "$1" ]; then
 fi
 
 echo "Building (with C library): $1.asm"
-nasm -f elf64 $1.asm -o $1.o
+nasm -f elf64 $1.asm -o $1.o -i$(dirname $1)/
 
 if [ $? -ne 0 ]; then
     echo "Assembly failed!"
