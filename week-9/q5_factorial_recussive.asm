@@ -55,18 +55,18 @@ factorial:
     mov rbp, rsp
     push rbx               
 
-    mov rax, rdi            ; rax = n (parameter in rdi)
+    mov rax, rdi       
     cmp rdi, 0
     je .base_case           
 
-    mov rbx, rdi            ; save n in rbx (survives the recursive call)
-    dec rdi                 ; rdi = n - 1
-    call factorial          ; rax = factorial(n - 1)
-    imul rax, rbx           ; rax = factorial(n - 1) * n
+    mov rbx, rdi           
+    dec rdi               
+    call factorial          
+    imul rax, rbx  
     jmp .done
 
 .base_case:
-    mov rax, 1              ; return 1 since it continues to .done
+    mov rax, 1           
 
 .done:
     pop rbx                 
